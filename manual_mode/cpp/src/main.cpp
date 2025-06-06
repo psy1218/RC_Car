@@ -7,11 +7,11 @@
 #define THROTTLE_OUT 9 // ESC 출력
 #define STEER_OUT 6    // 서보 출력
 
-#define LED_RED 3
-#define LED_GREEN 5
+#define LED_RED 3 // LED 빨간색 핀
+#define LED_GREEN 5 // LED 녹색 핀
 
-Servo esc;
-Servo steer_servo;
+Servo esc; // ESC 제어용 서보
+Servo steer_servo; // 조향 제어용 서보
 
 void setup()
 {

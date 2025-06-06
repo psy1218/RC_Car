@@ -80,9 +80,6 @@ def weighted_contour_score(contour):
 
     prev_x_temp = prev_x  # 글로벌변수 prev_x값을 변경하여 사용하도록 로컬변수를 선언합니다.
 
-    
-
-    
 
     # 중심 좌표를 계산합니다.
     M = cv2.moments(contour) #탐색된 컨투어의 모멘트 정보를 저장합니다.
