@@ -68,18 +68,23 @@
 
 - **영상 처리**: Picamera2 + OpenCV 사용
 - **카메라 설정**:
+  - size (640, 480)
   - framerate : 30
   - Brightness : -0.5 (밝기를 어둡게해 equalizeHist 처리를 극명하게 합니다.) 
   - AeEnable: false : (밝기 설정을 위해 자동노출설정을 끕니다.)
-- **ROI 설정**: 하단(x1), 중단(x2) 영역 추출  
+- **ROI 설정**:
+  - x1영역 (510 ~ 570)
+  - x2영역 (190 ~ 250)   
 - **전처리 과정**:  
   - `equalizeHist`: 히스토그램 평활화  
   - `morphologyEx`: 노이즈 제거  
   - `GaussianBlur`: 블러링  
   - `threshold`: 밝기 기반 이진화
-- **라인 인식**:  
-  - 컨투어 중심좌표 및 면적 기반 가중치 계산  
-  - 조향값 범위 `-50 ~ +50`으로 변환 후 시리얼 전송
+- **라인 인식 및 각도 변환**:  
+  ![image](https://github.com/user-attachments/assets/c61d2810-9d95-46be-847d-57ece9b8111e)
+  ---
+![image](https://github.com/user-attachments/assets/43253dcd-beea-46f9-b140-374d27366dc4)
+
 - **아두이노 제어**:  
   - `90 ± steer_val`로 서보 모터 제어  
   - 조향이 클 경우 저속 회전, 작을 경우 고속 직진  
