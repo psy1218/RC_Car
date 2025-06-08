@@ -53,8 +53,6 @@ yaho.configure(config)  # 설정을 적용합니다.
 
 yaho.set_controls({"FrameRate": 30})  # 프레임 속도를 30으로 설정합니다.
 yaho.set_controls({"Brightness": -0.5})  # 밝기를 -0.5로 설정합니다.
-yaho.set_controls({"ExposureTime": 10000})  # 노출 시간을 설정합니다.
-yaho.set_controls({"AeEnable": True})  # 자동 노출을 활성화합니다.
 yaho.start()  # 카메라를 시작합니다.
 
 
