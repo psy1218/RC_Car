@@ -66,7 +66,11 @@
 
 ### ● 자동 모드
 
-- **영상 처리**: Picamera2 + OpenCV 사용  
+- **영상 처리**: Picamera2 + OpenCV 사용
+- **카메라 설정**:
+  - framerate : 30
+  - Brightness : -0.5 (밝기를 어둡게해 equalizeHist 처리를 극명하게 합니다.) 
+  - AeEnable: false : (밝기 설정을 위해 자동노출설정을 끕니다.)
 - **ROI 설정**: 하단(x1), 중단(x2) 영역 추출  
 - **전처리 과정**:  
   - `equalizeHist`: 히스토그램 평활화  
