@@ -6,6 +6,7 @@ import time  # 대기시간을 위한 라이브러리.
 import glob  # 시리얼 경로 탐색을 위해 사용
 from collections import deque  # 이전 각도를 저장할 큐를 구현하기 위한 라이브러리 
 
+# 진성씨 고생이 많으세요... ㅠㅠ 
 ################################################## 시리얼설정
 # 라즈베리파이와 연결된 시리얼 포트를 찾아 반환하는 함수
 def auto_serial_connect():
@@ -53,6 +54,7 @@ yaho.configure(config)  # 설정을 적용합니다.
 
 yaho.set_controls({"FrameRate": 30})  # 프레임 속도를 30으로 설정합니다.
 yaho.set_controls({"Brightness": -0.5})  # 밝기를 -0.5로 설정합니다.
+yaho.set_controls({"AeEnable": False}) # 자동밝기 조절 off
 yaho.start()  # 카메라를 시작합니다.
 
 
