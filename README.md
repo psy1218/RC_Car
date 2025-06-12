@@ -109,12 +109,12 @@
   - x2영역 (190 ~ 250)   
 - **전처리 과정**:
   
-| 기본 | 카메라 세팅 | 히스토그램 평활화 | 모폴로지 Opening 연산 (35*10) | 
+| 기본 | 카메라 세팅 | 히스토그램 평활화 | 모폴로지 Opening 연산 (30*10) | 
 |:-------------:|:-------------:|:-------------:|:-------------:|
 |  <img width="515" alt="스크린샷 2025-06-11 오후 5 14 43" src="https://github.com/user-attachments/assets/5f64acd4-6b45-49ec-8f3c-b574077ff110" />|  <img width="521" alt="스크린샷 2025-06-11 오후 4 53 50" src="https://github.com/user-attachments/assets/8154cabd-06b6-43eb-b434-7994f73082ec" />|  <img width="508" alt="스크린샷 2025-06-11 오후 5 34 42" src="https://github.com/user-attachments/assets/f5f63a2b-74a6-4ecb-b3d6-b155f2bab512" />| <img width="510" alt="스크린샷 2025-06-11 오후 5 36 01" src="https://github.com/user-attachments/assets/f6392c5e-8185-4d35-b49e-4b831f45fda4" /> |
 
 
-| 모폴로지 Opening 연산 (10*35) | 가우시안 블러 | 이진화 |
+| 모폴로지 Opening 연산 (10*30) | 가우시안 블러 | 이진화 |
 |:-------------:|:-------------:|:-------------:|
 | <img width="517" alt="스크린샷 2025-06-11 오후 5 36 41" src="https://github.com/user-attachments/assets/cb028bf3-484a-47b7-b7ad-0357454e2f25" /> | <img width="511" alt="스크린샷 2025-06-11 오후 5 39 54" src="https://github.com/user-attachments/assets/2dc74b51-d3cd-40a6-8804-c911dcba6956" /> | <img width="509" alt="스크린샷 2025-06-11 오후 5 40 41" src="https://github.com/user-attachments/assets/5c2061ca-88b6-41e9-a2ff-6cc3796113b3" />  |
 
