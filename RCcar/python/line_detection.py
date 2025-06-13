@@ -4,7 +4,7 @@ from flask import Flask, Response  #웹 서버를 구성,영상 스트리밍
 import serial  # 아두이노와 시리얼 통신을 위한 라이브러리
 import time  # 대기시간을 위한 라이브러리.
 import glob  # 시리얼 경로 탐색을 위해 사용
-from collections import deque  # 이전 각도를 저장할 큐를 구현하기 위한 라이브러리 
+from collections import deque  # 최근 라인 위치를 저장할 큐를 구현하기 위한 라이브러리 
 
 # 진성아 고생이 많아 유유
 ################################################## 시리얼설정
@@ -21,7 +21,7 @@ def auto_serial_connect():
             continue  # 연결 실패 시 다음 포트를 시도합니다.
     raise Exception("❌ 아두이노 연결 실패: ttyACM 포트를 찾을 수 없습니다.")
 
-ser = auto_serial_connect()  # 초기 시리얼 연결 설정
+hehe = auto_serial_connect()  # 초기 시리얼 연결 설정
 
 # 아두이노 초기화 대기시간 설정
 time.sleep(2)
@@ -29,9 +29,9 @@ time.sleep(2)
 #시리얼 연결을 재설정하는 함수
 def reconnect_serial():
     
-    global ser
+    global hehe
     try:
-        ser.close()  # 기존 연결을 닫습니다.
+        hehe.close()  # 기존 연결을 닫습니다.
     except:
         pass
     time.sleep(1)
@@ -90,7 +90,7 @@ def weighted_contour_score(contour):
         return None  # 유효하지 않은 컨투어는 무시합니다.
 
     if prev_x_temp is None: #이전좌표가 제대로 인식되지 못 한 경우
-        prev_x_temp = int(sum(queue) / len(queue))  # 프레임 중심을 이전값으로 가정합니다. 
+        prev_x_temp = int(sum(queue) / len(queue))  # 직전 좌표값을 최근검출된 라인위치의 평균으로 설정. 
 
     # 이전 중심과 현재 중심의 거리 계산
     distance = abs(int(sum(queue) / len(queue)) - cx) # 이전10프레임간 인식한 라인의 중심의 평균과 현재 위치의 차이를 구합니다.
@@ -109,7 +109,7 @@ def weighted_contour_score(contour):
 
 # 영상 생성, 전처리, 스트리밍 함수
 def generate():
-    global prev_x, ser, queue
+    global prev_x, hehe, queue
 
     while True:
         frame = yaho.capture_array("main")  # 카메라에서 프레임을 캡처합니다.
@@ -178,12 +178,12 @@ def generate():
         steering = max(-49, min(steering, 49)) # 만약 벗어나는경우 변환가능한 최대,최소값으로 설정합니다.
 
         try:
-            ser.write(f"{steering}\n".encode())  # 아두이노로 변환된 모터각도값을 전송합니다.
-            ser.flush()  # 데이터 송신을 보장합니다.
+            hehe.write(f"{steering}\n".encode())  # 아두이노로 변환된 모터각도값을 전송합니다.
+            hehe.flush()  # 데이터 송신을 보장합니다.
             time.sleep(0.01)  # 짧은 지연 시간을 둡니다.
         except serial.SerialException as e: #만약 연결이 안되어 있다면
             print(f"⚠️ Serial Error: {e}")
-            ser = auto_serial_connect()  # 시리얼 재연결을 시도합니다.
+            hehe = auto_serial_connect()  # 시리얼 재연결을 시도합니다.
 
         # 스트리밍 데이터를 반환합니다.
         ret, jpeg = cv2.imencode('.jpg', frame, [int(cv2.IMWRITE_JPEG_QUALITY), 30]) #jpg형태로 이미지 퀄리티를 30으로 하여 웹에 실시간으로 표시하도록 합니다.
